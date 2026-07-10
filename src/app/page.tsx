@@ -232,11 +232,15 @@ export default function Home() {
             {!companyName && !resultData && (
               /* Welcome Dashboard (Fills the right-side blank space beautifully with active statistics) */
               <div className="flex flex-col gap-6 w-full animate-fade-in">
-                <div className="dashboard-card bg-gradient-to-r from-rose-950 to-rose-900 text-white p-6 rounded-2xl border-none relative overflow-hidden shadow-lg flex flex-col md:flex-row gap-6 items-center">
-                  <div className="absolute right-0 top-0 w-60 h-60 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+                <div
+                  className="rounded-2xl border-none relative overflow-hidden shadow-lg flex flex-col md:flex-row gap-6 items-center p-6"
+                  style={{ background: 'linear-gradient(135deg, #4c0519 0%, #881337 60%, #be123c 100%)' }}
+                >
+                  <div className="absolute right-0 top-0 w-60 h-60 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                  <div className="absolute -left-10 -bottom-10 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
                   <div className="flex-1">
-                    <h2 className="text-2xl font-black mb-2 text-rose-100">Vanguard AI Core Terminal</h2>
-                    <p className="text-sm text-rose-100/90 max-w-xl leading-relaxed font-medium">
+                    <h2 className="text-2xl font-black mb-2 text-white drop-shadow">Vanguard AI Core Terminal</h2>
+                    <p className="text-sm text-rose-100 max-w-xl leading-relaxed font-medium">
                       Welcome to the Next-Generation Autonomous Investment Research Environment. 
                       Vanguard AI uses advanced language models to run deep analyses on corporate statements, live market sentiment, and financial distress ratios.
                     </p>
