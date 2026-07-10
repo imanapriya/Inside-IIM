@@ -1,53 +1,53 @@
 @import "tailwindcss";
 
-/* Default Theme variables (Light Mode Warm Beige) */
+/* Default Theme variables (Royal Emerald & Warm Sand - Luxury Wealth Management) */
 :root, .theme-light {
-  --background: #eae3d2; /* Warm beige background */
-  --foreground: #000000; /* Pure black text for maximum readability */
+  --background: #f4f1e6; /* Soft warm sand */
+  --foreground: #0c120e; /* Deep charcoal with forest tone */
   
-  /* Maroon Palette */
-  --maroon-deep: #4c0519;
-  --maroon-medium: #881337;
-  --maroon-light: #ffd1d7;
-  --maroon-glow: rgba(136, 19, 55, 0.16);
+  /* Emerald & Gold Palette */
+  --maroon-deep: #064e3b; /* Royal Emerald */
+  --maroon-medium: #047857; /* Medium Emerald */
+  --maroon-light: #d1fae5; /* Soft light mint green */
+  --maroon-glow: rgba(4, 78, 55, 0.12);
   
   /* Popping Accents */
-  --indigo-accent: #1e1b4b; /* Deep indigo black */
-  --mint-green: #047857; /* Rich forest green */
-  --coral-orange: #be123c; /* Deep red-coral */
-  --sky-blue: #0369a1; /* Deep sky blue */
-  --amber-gold: #b45309; /* Deep amber gold */
+  --indigo-accent: #b45309; /* Warm gold/amber details */
+  --mint-green: #047857; /* Success emerald */
+  --coral-orange: #991b1b; /* Pass crimson */
+  --sky-blue: #0369a1; /* Calm blue */
+  --amber-gold: #c5a059; /* Metallic gold */
   
   /* Card Aesthetics */
-  --card-bg: #faf7ef; /* Lighter warm beige instead of white */
-  --card-border: rgba(76, 5, 25, 0.25); /* Bold maroon border outline */
-  --card-shadow: 0 10px 25px -5px rgba(76, 5, 25, 0.06), 0 8px 10px -6px rgba(76, 5, 25, 0.06);
-  --card-shadow-hover: 0 20px 25px -5px rgba(76, 5, 25, 0.12), 0 10px 10px -6px rgba(76, 5, 25, 0.12);
+  --card-bg: #fbfaf5; /* Sand-cream card */
+  --card-border: rgba(6, 78, 59, 0.22); /* Emerald outline */
+  --card-shadow: 0 10px 25px -5px rgba(6, 78, 59, 0.04), 0 8px 10px -6px rgba(6, 78, 59, 0.04);
+  --card-shadow-hover: 0 20px 25px -5px rgba(6, 78, 59, 0.08), 0 10px 10px -6px rgba(6, 78, 59, 0.08);
 }
 
-/* Dark Theme Variables (Dark Maroon Black) */
+/* Dark Theme Variables (Deep Emerald Black & Mint Gold) */
 .theme-dark {
-  --background: #140207; /* Luxurious deep maroon black */
-  --foreground: #ffd1d7; /* Soft light rose pink text */
+  --background: #02140f; /* Luxurious deep emerald-black */
+  --foreground: #d1fae5; /* Soft light mint text */
   
-  /* Maroon Palette */
-  --maroon-deep: #ffd1d7; /* Highlight text matches lighter rose */
-  --maroon-medium: #fda4af;
-  --maroon-light: #4c0519;
-  --maroon-glow: rgba(244, 63, 94, 0.15);
+  /* Emerald & Gold Palette */
+  --maroon-deep: #d1fae5; /* Highlight text matches lighter mint */
+  --maroon-medium: #a7f3d0;
+  --maroon-light: #064e3b;
+  --maroon-glow: rgba(52, 211, 153, 0.15);
   
   /* Accents */
-  --indigo-accent: #818cf8; /* Light indigo */
+  --indigo-accent: #fbbf24; /* Warm gold */
   --mint-green: #34d399; /* Bright mint green */
   --coral-orange: #f87171; /* Soft coral */
   --sky-blue: #38bdf8; /* Bright sky blue */
-  --amber-gold: #fbbf24; /* Bright gold */
+  --amber-gold: #c5a059; /* Metallic gold */
   
   /* Card Aesthetics */
-  --card-bg: #1c050a; /* Deep rich wine card */
-  --card-border: rgba(225, 29, 72, 0.28); /* Glowing wine-red border */
+  --card-bg: #05261d; /* Deep emerald-green card */
+  --card-border: rgba(52, 211, 153, 0.28); /* Glowing mint border */
   --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
-  --card-shadow-hover: 0 25px 45px -10px rgba(225, 29, 72, 0.15);
+  --card-shadow-hover: 0 25px 45px -10px rgba(52, 211, 153, 0.15);
 }
 
 body {
@@ -148,8 +148,8 @@ body {
    ========================================================================== */
 
 .app-header {
-  border-bottom: 1px solid rgba(76, 5, 25, 0.15);
-  background: rgba(234, 227, 210, 0.85);
+  border-bottom: 1px solid rgba(6, 78, 59, 0.15);
+  background: rgba(244, 241, 230, 0.85);
   backdrop-filter: blur(16px);
   position: sticky;
   top: 0;
