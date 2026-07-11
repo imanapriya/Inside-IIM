@@ -138,16 +138,16 @@ export default function LandingPage({ onStart, theme, onToggleTheme }: LandingPa
           {/* Key Quick Stats */}
           <div className="grid grid-cols-3 gap-4 border-t border-rose-100/30 pt-6 mt-2">
             <div>
-              <p className="text-xl sm:text-2xl font-black text-rose-950 dark:text-rose-200">4</p>
-              <p className="text-[10px] sm:text-xs text-rose-900 font-bold uppercase tracking-wider">Sub-Agents</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: "var(--maroon-deep)" }}>4</p>
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider" style={{ color: "var(--maroon-medium)" }}>Sub-Agents</p>
             </div>
             <div>
-              <p className="text-xl sm:text-2xl font-black text-rose-950 dark:text-rose-200">15s</p>
-              <p className="text-[10px] sm:text-xs text-rose-900 font-bold uppercase tracking-wider">Avg Pipeline Run</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: "var(--maroon-deep)" }}>15s</p>
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider" style={{ color: "var(--maroon-medium)" }}>Avg Pipeline Run</p>
             </div>
             <div>
-              <p className="text-xl sm:text-2xl font-black text-rose-950 dark:text-rose-200">100%</p>
-              <p className="text-[10px] sm:text-xs text-rose-900 font-bold uppercase tracking-wider">Local Key Privacy</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: "var(--maroon-deep)" }}>100%</p>
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider" style={{ color: "var(--maroon-medium)" }}>Local Key Privacy</p>
             </div>
           </div>
         </div>
