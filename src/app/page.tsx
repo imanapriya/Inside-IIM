@@ -8,11 +8,13 @@ import AgentConsole, { AgentLog } from "./components/AgentConsole";
 import FinancialDashboard from "./components/FinancialDashboard";
 import ReportView from "./components/ReportView";
 import LoginPage from "./components/LoginPage";
+import LandingPage from "./components/LandingPage";
 import { AlertCircle, RotateCcw } from "lucide-react";
 
 export default function Home() {
   // Authentication & Theme States
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -58,6 +60,7 @@ export default function Home() {
   const handleLogout = () => {
     sessionStorage.removeItem("vanguard_authorized");
     setIsLoggedIn(false);
+    setShowLogin(false);
     setCompanyName("");
     setLogs([]);
     setProgress(0);
@@ -159,9 +162,28 @@ export default function Home() {
     setErrorMsg("");
   };
 
-  // Guard routing using LoginPage
+  // Guard routing using LandingPage / LoginPage
   if (!isLoggedIn) {
-    return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+    if (showLogin) {
+      return (
+        <div className={`theme-${theme} min-h-screen`}>
+          <LoginPage 
+            onLoginSuccess={handleLoginSuccess} 
+            onBackToLanding={() => setShowLogin(false)}
+            theme={theme}
+          />
+        </div>
+      );
+    }
+    return (
+      <div className={`theme-${theme} min-h-screen`}>
+        <LandingPage 
+          onStart={() => setShowLogin(true)} 
+          theme={theme} 
+          onToggleTheme={handleToggleTheme} 
+        />
+      </div>
+    );
   }
 
   return (

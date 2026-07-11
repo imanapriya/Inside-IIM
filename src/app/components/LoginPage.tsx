@@ -1,13 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Cpu, Eye, EyeOff, ShieldCheck, Lock, Mail } from "lucide-react";
+import { Cpu, Eye, EyeOff, ShieldCheck, Lock, Mail, User, ArrowLeft } from "lucide-react";
 
 interface LoginPageProps {
   onLoginSuccess: () => void;
+  onBackToLanding?: () => void;
+  theme?: "light" | "dark";
 }
 
-export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
+export default function LoginPage({ onLoginSuccess, onBackToLanding, theme }: LoginPageProps) {
+  const [activeTab, setActiveTab] = useState<"signin" | "signup">("signin");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("analyst@vanguard.ai");
   const [password, setPassword] = useState("vanguard2026");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,15 +23,32 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
     setErrorMsg("");
     setIsSubmitting(true);
 
-    // Simple authentication logic for evaluation
-    setTimeout(() => {
-      if (email.trim() === "analyst@vanguard.ai" && password === "vanguard2026") {
+    if (activeTab === "signin") {
+      // Simple authentication logic for evaluation
+      setTimeout(() => {
+        if (email.trim() === "analyst@vanguard.ai" && password === "vanguard2026") {
+          onLoginSuccess();
+        } else {
+          setErrorMsg("Invalid authorization credentials. Use the default preview account or instant access.");
+          setIsSubmitting(false);
+        }
+      }, 800);
+    } else {
+      // Simulate client-side registration
+      setTimeout(() => {
+        if (!email.includes("@")) {
+          setErrorMsg("Please enter a valid email address.");
+          setIsSubmitting(false);
+          return;
+        }
+        if (password.length < 6) {
+          setErrorMsg("Password must be at least 6 characters.");
+          setIsSubmitting(false);
+          return;
+        }
         onLoginSuccess();
-      } else {
-        setErrorMsg("Invalid authorization credentials. Use the default preview account.");
-        setIsSubmitting(false);
-      }
-    }, 800);
+      }, 1000);
+    }
   };
 
   const handleQuickLogin = () => {
@@ -46,6 +67,13 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
       </div>
 
       <div className="login-card">
+        {onBackToLanding && (
+          <button type="button" onClick={onBackToLanding} className="back-to-home-btn">
+            <ArrowLeft size={14} />
+            <span>Back to Home</span>
+          </button>
+        )}
+
         <div className="login-logo-wrapper">
           <div className="login-logo-icon">
             <Cpu size={32} />
@@ -55,14 +83,45 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
           <img
             src="/images/login_illustration.png"
             alt="Vanguard AI Illustration"
-            className="w-full max-h-24 object-contain my-3 rounded-lg opacity-90"
+            className="w-full max-h-20 object-contain my-2.5 rounded-lg opacity-90"
           />
+        </div>
+
+        {/* Tab Selection */}
+        <div className="auth-tabs">
+          <button
+            type="button"
+            className={`auth-tab-btn ${activeTab === "signin" ? "active-tab" : ""}`}
+            onClick={() => {
+              setActiveTab("signin");
+              setErrorMsg("");
+            }}
+          >
+            Sign In
+          </button>
+          <button
+            type="button"
+            className={`auth-tab-btn ${activeTab === "signup" ? "active-tab" : ""}`}
+            onClick={() => {
+              setActiveTab("signup");
+              setErrorMsg("");
+              // Clear default credentials for signup preview
+              setEmail("");
+              setPassword("");
+            }}
+          >
+            Sign Up
+          </button>
         </div>
 
         <div className="login-alert">
           <ShieldCheck size={18} className="text-rose-700 shrink-0 mt-0.5" />
           <p className="login-alert-text">
-            For interview review, use the default credentials below or click the <strong>Quick Access</strong> button to login instantly.
+            {activeTab === "signin" ? (
+              <>For review, use the default credentials below or click <strong>Quick Access</strong> to login instantly.</>
+            ) : (
+              <>Register a preview profile to test user pipeline sandbox environments instantly.</>
+            )}
           </p>
         </div>
 
@@ -73,6 +132,23 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {activeTab === "signup" && (
+            <div className="form-group">
+              <label className="form-label">Full Name</label>
+              <div className="input-wrapper">
+                <User className="absolute left-3 text-zinc-400" size={16} />
+                <input
+                  type="text"
+                  className="form-input !pl-9"
+                  placeholder="Alexander Vanguard"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+          )}
+
           <div className="form-group">
             <label className="form-label">Email Address</label>
             <div className="input-wrapper">
@@ -80,7 +156,7 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
               <input
                 type="email"
                 className="form-input !pl-9"
-                placeholder="analyst@vanguard.ai"
+                placeholder={activeTab === "signin" ? "analyst@vanguard.ai" : "yourname@domain.com"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -111,7 +187,11 @@ export default function LoginPage({ onLoginSuccess }: LoginPageProps) {
           </div>
 
           <button type="submit" className="search-submit-btn mt-2" disabled={isSubmitting}>
-            {isSubmitting ? "Authorizing Security..." : "Sign In to Terminal"}
+            {isSubmitting ? (
+              activeTab === "signin" ? "Authorizing Security..." : "Creating Preview Profile..."
+            ) : (
+              activeTab === "signin" ? "Sign In to Terminal" : "Register & Launch Terminal"
+            )}
           </button>
         </form>
 
