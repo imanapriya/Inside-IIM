@@ -8,7 +8,12 @@ Developed as part of the **InsideIIM × Altuni AI Labs** Product Development Eng
 
 ## 🚀 Overview
 
-Vanguard AI takes a company name (e.g., Apple, NVIDIA, Tesla) and deploys a coordinated pipeline of specialized sub-agents:
+Vanguard AI features a multi-tiered architecture that includes:
+- **Interactive Landing Page**: The default home interface prior to authentication. It features a fully simulated, live-updating terminal mock showing agent research flows in action, preset assets preview tables, and client-side data safety highlights.
+- **Enhanced Authentication Gate**: An authorization panel supporting instant toggle tabs for **Sign In** and **Sign Up** flows, along with a "Back to Home" navigation link to return to the landing page.
+- **Dynamic Dual-Theme Styling**: Support for seamless switching between a Bloomberg-inspired dark mode (deep crimson/wine backgrounds with glowing borders) and a premium light mode (warm beige layouts with dark maroon branding) across all landing pages and terminal dashboards.
+
+Once logged in, Vanguard AI takes a company name (e.g., Apple, NVIDIA, Tesla) and deploys a coordinated pipeline of specialized sub-agents:
 1. **Web Search Agent**: Queries Tavily Search to gather the latest financial releases, news articles, and macroeconomic contexts.
 2. **Financial Analysis Agent**: Gathers core ratios (P/E, margins, debt-to-equity) and calculates insolvency benchmarks such as the **Altman Z-Score**.
 3. **Sentiment Analysis Agent**: Classifies media headlines and analyst reports to output an aggregate Bullish/Bearish/Neutral dial.
