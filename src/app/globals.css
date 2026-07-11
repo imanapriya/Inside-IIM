@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
+
 /* Default Theme variables (Light Mode Warm Beige) */
 :root, .theme-light {
   --background: #eae3d2; /* Warm beige background */
